@@ -23,17 +23,6 @@ cd pdf-similarity-search
 pip install -r requirements.txt
 ```
 
-3. **Configure a API Key**:
-```bash
-# Para Gemini (recomendado)
-export GOOGLE_API_KEY="sua_chave_gemini"
-
-# Para OpenAI (alternativa)
-export OPENAI_API_KEY="sua_chave_openai"
-```
-
-**Obtenha sua chave Gemini gratuitamente em:** https://makersuite.google.com/app/apikey
-
 ## 📖 Como Usar
 
 ### 🖥️ Interface Web
@@ -88,11 +77,6 @@ pdf-similarity-search/
 
 ## 🔧 Configuração
 
-### Variáveis de Ambiente
-
-- `GOOGLE_API_KEY`: Sua chave da API Google Gemini (recomendado)
-- `OPENAI_API_KEY`: Sua chave da API OpenAI (alternativa)
-
 ### 📦 Dependências
 
 O projeto utiliza as seguintes dependências principais:
@@ -116,25 +100,6 @@ Na interface web, você pode ajustar:
 - **Chunk Overlap**: Sobreposição entre chunks (0-500 caracteres)
 - **Número de Resultados**: Quantidade de resultados da busca (1-20)
 
-## 📋 Exemplos de Uso
-
-### Exemplo 1: Análise de Documento Acadêmico
-1. Execute `streamlit run main.py`
-2. Faça upload de um paper.pdf
-3. Digite: "Quais são as principais conclusões do estudo?"
-4. Clique em "Buscar"
-
-### Exemplo 2: Busca em Manual Técnico
-1. Execute `streamlit run main.py`
-2. Faça upload de um manual.pdf
-3. Digite: "Como configurar o sistema?"
-4. Clique em "Buscar"
-
-### Exemplo 3: Análise de Relatório
-1. Execute `streamlit run main.py`
-2. Faça upload de um relatorio.pdf
-3. Digite: "Quais são os resultados financeiros?"
-4. Clique em "Buscar"
 
 ## 🔍 Como Funciona
 
@@ -144,29 +109,6 @@ Na interface web, você pode ajustar:
 4. **Busca**: Sua pergunta é convertida em vetor e comparada com os chunks
 5. **Resultados**: Os chunks mais similares são retornados
 
-## 🐛 Solução de Problemas
-
-### Erro: "GOOGLE_API_KEY não encontrada"
-```bash
-export GOOGLE_API_KEY="sua_chave_gemini"
-```
-**Obtenha sua chave gratuitamente em:** https://makersuite.google.com/app/apikey
-
-### Erro: "OPENAI_API_KEY não encontrada"
-```bash
-export OPENAI_API_KEY="sk-sua_chave_aqui"
-```
-
-### Erro: "Arquivo PDF não encontrado"
-Verifique se o caminho do arquivo está correto e se o arquivo existe.
-
-### Erro: "Erro ao carregar o PDF"
-Certifique-se de que o arquivo é um PDF válido e não está corrompido.
-
-### Erro: "Streamlit não encontrado"
-```bash
-pip install streamlit
-```
 
 ## 🚀 Funcionalidades da Interface
 
@@ -177,15 +119,3 @@ A interface Streamlit oferece:
 - **Configuração de Parâmetros**: Ajuste chunk size, overlap e número de resultados
 - **Busca Interativa**: Digite perguntas e veja resultados em tempo real
 - **Visualização de Resultados**: Resultados organizados por página com expansores
-
-## 📝 Licença
-
-Este projeto está sob a licença MIT.
-
-## 🤝 Contribuições
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests.
-
-## 📞 Suporte
-
-Se você encontrar algum problema ou tiver dúvidas, abra uma issue no repositório.
