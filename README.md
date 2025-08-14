@@ -8,7 +8,6 @@ Um agente inteligente que usa LangChain e vectorstores para processar PDFs e rea
 - 🔍 **Busca por Similaridade**: Encontra conteúdo relevante usando embeddings
 - 🧠 **IA Integrada**: Suporte para Gemini (Google) e OpenAI
 - 🌐 **Interface Web**: Interface Streamlit amigável para uso
-- 💻 **CLI**: Modo linha de comando para automação
 - 📊 **Vectorstore**: Armazena embeddings em ChromaDB para busca rápida
 
 ## 🚀 Instalação
@@ -37,7 +36,7 @@ export OPENAI_API_KEY="sua_chave_openai"
 
 ## 📖 Como Usar
 
-### 🖥️ Interface Web (Recomendado)
+### 🖥️ Interface Web
 
 Execute o programa com a interface Streamlit:
 
@@ -51,21 +50,6 @@ Isso abrirá uma interface web onde você pode:
 - Configurar parâmetros de processamento
 - Digitar sua pergunta
 - Ver os resultados da busca por similaridade
-
-### 💻 Linha de Comando
-
-Para usar via linha de comando:
-
-```bash
-# Busca básica com Gemini (padrão)
-python main.py documento.pdf "Qual é o tema principal?"
-
-# Busca com Gemini explicitamente
-python main.py documento.pdf "Quais são os métodos utilizados?" --model gemini
-
-# Busca com OpenAI
-python main.py documento.pdf "Quais são os métodos utilizados?" --model openai
-```
 
 ### 🔧 Uso Programático
 
@@ -135,22 +119,22 @@ Na interface web, você pode ajustar:
 ## 📋 Exemplos de Uso
 
 ### Exemplo 1: Análise de Documento Acadêmico
-```bash
-streamlit run main.py
-# Faça upload de paper.pdf e pergunte: "Quais são as principais conclusões do estudo?"
-```
+1. Execute `streamlit run main.py`
+2. Faça upload de um paper.pdf
+3. Digite: "Quais são as principais conclusões do estudo?"
+4. Clique em "Buscar"
 
 ### Exemplo 2: Busca em Manual Técnico
-```bash
-streamlit run main.py
-# Faça upload de manual.pdf e pergunte: "Como configurar o sistema?"
-```
+1. Execute `streamlit run main.py`
+2. Faça upload de um manual.pdf
+3. Digite: "Como configurar o sistema?"
+4. Clique em "Buscar"
 
 ### Exemplo 3: Análise de Relatório
-```bash
-streamlit run main.py
-# Faça upload de relatorio.pdf e pergunte: "Quais são os resultados financeiros?"
-```
+1. Execute `streamlit run main.py`
+2. Faça upload de um relatorio.pdf
+3. Digite: "Quais são os resultados financeiros?"
+4. Clique em "Buscar"
 
 ## 🔍 Como Funciona
 
