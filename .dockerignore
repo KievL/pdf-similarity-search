@@ -1,0 +1,34 @@
+# Arquivos de otimização (não necessários para o sistema principal)
+pdf_optimizer.py
+pdf_optimizer_crewai.py
+
+# Arquivos de desenvolvimento
+.git
+.gitignore
+README.md
+*.md
+docker-compose-instructions.md
+
+# Arquivos Docker
+docker-compose.yml
+run.sh
+env.example
+.env
+
+# Arquivos temporários
+temp*.pdf
+chroma_db/
+
+# Arquivos Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
