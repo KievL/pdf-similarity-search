@@ -1,6 +1,8 @@
 services:
-  pdf-agent:
+  decomissioning-agent-interface:
     build: .
+    env_file:
+      - .env
     ports:
       - "8501:8501"
     volumes:

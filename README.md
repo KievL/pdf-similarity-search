@@ -1,121 +1,88 @@
-# 🤖 PDF Agent - Busca por Similaridade com LangChain
+# PDF Similarity Search
 
-Um agente inteligente que usa LangChain e vectorstores para processar PDFs e realizar buscas por similaridade usando IA.
+Sistema de busca por similaridade em documentos PDF usando LangChain, Google Gemini e ChromaDB.
 
-## ✨ Funcionalidades
+## Pré-requisitos
 
-- 📄 **Carregamento de PDFs**: Processa arquivos PDF automaticamente
-- 🔍 **Busca por Similaridade**: Encontra conteúdo relevante usando embeddings
-- 🧠 **IA Integrada**: Suporte para Gemini (Google) e OpenAI
-- 🌐 **Interface Web**: Interface Streamlit amigável para uso
-- 📊 **Vectorstore**: Armazena embeddings em ChromaDB para busca rápida
+- Docker e Docker Compose instalados
+- Google API Key para Gemini
 
-## 🚀 Instalação
+## Configuração
 
-1. **Clone o repositório**:
+1. Clone o repositório:
 ```bash
-git clone <seu-repositorio>
+git clone <repository-url>
 cd pdf-similarity-search
 ```
 
-2. **Instale as dependências**:
+2. Configure as variáveis de ambiente:
+```bash
+cp env.example .env
+```
+
+3. Edite o arquivo `.env` com suas configurações:
+```env
+# Google API Key para Gemini
+GOOGLE_API_KEY=your_google_api_key_here
+
+# Caminho para os PDFs (apenas para o script de criar os embeddings)
+EMBEDDINGS_PDFS_PATH=/app/pdfs
+
+# Configurações do Vectorstore (não mexer)
+VECTORSTORE_PATH=./chroma_db
+
+# Configurações de Chunks (para o script de criar os embeddings)
+CHUNK_SIZE=1000
+CHUNK_OVERLAP=200
+
+# Configurações de Similarity Search (quantidade inicial do slider de documentos)
+K_DOCUMENTS=5
+```
+
+## Execução
+
+1. Construa e execute o container:
+```bash
+docker-compose up --build
+```
+
+2. Acesse a aplicação em: http://localhost:8501
+
+## Funcionalidades
+
+- **Chat**: Interface para fazer perguntas sobre os documentos PDF
+- **Evaluation**: Avaliação automática da qualidade das respostas
+- **Similarity Search**: Busca por documentos relevantes usando embeddings
+
+## Estrutura do Projeto
+
+```
+pdf-similarity-search/
+├── main.py                 # Aplicação Streamlit
+├── create_embeddings.py    # Script para criar embeddings
+├── requirements.txt        # Dependências Python
+├── docker-compose.yml      # Configuração Docker
+├── Dockerfile             # Imagem Docker
+├── .env                   # Variáveis de ambiente (criar)
+├── env.example            # Exemplo de variáveis
+└── chroma_db/             # Database de embeddings (criado automaticamente)
+```
+
+## Desenvolvimento Local
+
+Para executar sem Docker:
+
+1. Instale as dependências:
 ```bash
 pip install -r requirements.txt
 ```
 
-## 📖 Como Usar
+2. Configure o `.env` com o caminho local dos PDFs:
+```env
+EMBEDDINGS_PDFS_PATH=/caminho/local/para/pdfs
+```
 
-### 🖥️ Interface Web
-
-Execute o programa com a interface Streamlit:
-
+3. Execute:
 ```bash
 streamlit run main.py
 ```
-
-Isso abrirá uma interface web onde você pode:
-- Fazer upload de um PDF
-- Escolher entre Gemini ou OpenAI
-- Configurar parâmetros de processamento
-- Digitar sua pergunta
-- Ver os resultados da busca por similaridade
-
-### 🔧 Uso Programático
-
-```python
-from main import PDFAgent
-
-# Inicializa o agente com Gemini (padrão)
-agent = PDFAgent("sua_google_api_key", "gemini")
-
-# Ou com OpenAI
-agent = PDFAgent("sua_openai_api_key", "openai")
-
-# Carrega um PDF
-agent.load_pdf("documento.pdf")
-
-# Cria o vectorstore
-agent.create_vectorstore()
-
-# Faz uma busca
-results = agent.similarity_search("Sua pergunta aqui")
-
-# Exibe os resultados
-for doc in results:
-    print(f"Página {doc.metadata.get('page')}: {doc.page_content}")
-```
-
-## 🛠️ Estrutura do Projeto
-
-```
-pdf-similarity-search/
-├── main.py                    # Código principal do agente
-├── requirements.txt           # Dependências do projeto
-├── README.md                 # Este arquivo
-└── chroma_db/                # Diretório do vectorstore (criado automaticamente)
-```
-
-## 🔧 Configuração
-
-### 📦 Dependências
-
-O projeto utiliza as seguintes dependências principais:
-
-- `langchain`: Framework principal para LLMs
-- `langchain-community`: Componentes comunitários do LangChain
-- `langchain-openai`: Integração com OpenAI
-- `langchain-google-genai`: Integração com Google Gemini
-- `chromadb`: Vector database local
-- `pypdf`: Processamento de PDFs
-- `streamlit`: Interface web
-- `openai`: Cliente da API OpenAI
-- `google-generativeai`: Cliente da API Google Gemini
-- `tiktoken`: Tokenização de texto
-
-### Parâmetros Configuráveis
-
-Na interface web, você pode ajustar:
-
-- **Chunk Size**: Tamanho dos chunks de texto (500-2000 caracteres)
-- **Chunk Overlap**: Sobreposição entre chunks (0-500 caracteres)
-- **Número de Resultados**: Quantidade de resultados da busca (1-20)
-
-
-## 🔍 Como Funciona
-
-1. **Carregamento**: O PDF é carregado e dividido em chunks menores
-2. **Embeddings**: Cada chunk é convertido em vetores usando Gemini ou OpenAI
-3. **Armazenamento**: Os vetores são armazenados no ChromaDB
-4. **Busca**: Sua pergunta é convertida em vetor e comparada com os chunks
-5. **Resultados**: Os chunks mais similares são retornados
-
-
-## 🚀 Funcionalidades da Interface
-
-A interface Streamlit oferece:
-
-- **Upload de PDF**: Arraste e solte ou clique para selecionar
-- **Configuração de Modelo**: Escolha entre Gemini e OpenAI
-- **Configuração de Parâmetros**: Ajuste chunk size, overlap e número de resultados
-- **Busca Interativa**: Digite perguntas e veja resultados em tempo real
-- **Visualização de Resultados**: Resultados organizados por página com expansores

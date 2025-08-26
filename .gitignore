@@ -45,7 +45,6 @@ ehthumbs.db
 Thumbs.db
 
 # Project specific
-chroma_db/
 *.pdf
 .env
 .env.local
