@@ -12,6 +12,9 @@ chromadb>=0.4.22
 # PDF processing
 pypdf>=3.17.4
 
+# Ollama models
+langchain_ollama
+
 # MarkItDown
 markitdown[all]
 
@@ -24,3 +27,9 @@ streamlit>=1.28.0
 
 # Text processing
 tiktoken>=0.5.2
+
+# Tqdm
+tqdm
+
+# Faiss
+faiss-cpu
